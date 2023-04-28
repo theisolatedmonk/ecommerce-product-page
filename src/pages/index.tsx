@@ -23,29 +23,27 @@ import {
   Discription,
   Price,
   AdddCartBtn,
-  Header,
   PluseMinuse,
   SlideBtn,
 } from "@/components/card";
-import MobileMenu from "@/components/card";
+import { Header } from "@/components/Header";
 
 export default function Home() {
   return (
     <main className=" flex  justify-center items-center bg-black min-h-screen font-KumbhSans">
-      <MobileMenu />
       <div className="w-72 relative text-black h-full bg-white flex flex-col  ">
         <Header />
         <Card />
 
         <div className="imgbox relative ">
           <Image className="h-" src={product1} alt="" />
-          <SlideBtn/>
+          <SlideBtn />
         </div>
 
         <Discription />
 
         <Price />
-          <PluseMinuse />
+        <PluseMinuse />
         <AdddCartBtn />
       </div>
     </main>
