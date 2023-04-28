@@ -25,6 +25,7 @@ import {
   AdddCartBtn,
   Header,
   PluseMinuse,
+  SlideBtn,
 } from "@/components/card";
 import MobileMenu from "@/components/card";
 
@@ -38,7 +39,7 @@ export default function Home() {
 
         <div className="imgbox relative ">
           <Image className="h-" src={product1} alt="" />
-          <NextBtn />
+          <SlideBtn/>
         </div>
 
         <Discription />
