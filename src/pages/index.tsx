@@ -17,30 +17,35 @@ import product3Thumb from "@/images/image-product-3-thumbnail.jpg";
 import product3 from "@/images/image-product-3.jpg";
 import product4Thumb from "@/images/image-product-4-thumbnail.jpg";
 import product4 from "@/images/image-product-4.jpg";
-import  PluseMinuse, { NextBtn, Card, Discription, Price, AdddCartBtn, Header } from "@/components/card";
+import {
+  NextBtn,
+  Card,
+  Discription,
+  Price,
+  AdddCartBtn,
+  Header,
+  PluseMinuse,
+} from "@/components/card";
 import MobileMenu from "@/components/card";
 
 export default function Home() {
   return (
-    <main className=" flex  justify-center items-center bg-black min-h-screen">
-      <MobileMenu/>
-      <div className="w-72 relative text-black h-full bg-white flex flex-col gap-2 ">
-      
-      <Header/>
-      <Card/>
+    <main className=" flex  justify-center items-center bg-black min-h-screen font-KumbhSans">
+      <MobileMenu />
+      <div className="w-72 relative text-black h-full bg-white flex flex-col  ">
+        <Header />
+        <Card />
 
         <div className="imgbox relative ">
-          <Image className="h-56" src={product1} alt="" />
-          <NextBtn/>
+          <Image className="h-" src={product1} alt="" />
+          <NextBtn />
         </div>
 
-        <Discription/>
+        <Discription />
 
-        <Price/>
-
-        <PluseMinuse/>
-
-        <AdddCartBtn/>
+        <Price />
+          <PluseMinuse />
+        <AdddCartBtn />
       </div>
     </main>
   );
