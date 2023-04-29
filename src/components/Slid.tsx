@@ -19,16 +19,30 @@ export function PreviewImg(props: LargeImges) {
   const [currentImg, setCurrentImg] = useState(0);
 
   function handleClickNext() {
-    setCurrentImg(currentImg + 1);
+    if (currentImg === productsImg.length - 1) {
+      setCurrentImg(0);
+    } else {
+      setCurrentImg(currentImg + 1);
+    }
   }
   function handleClickPrivious() {
-    setCurrentImg(currentImg - 1);
+    if (currentImg ===0) {
+      setCurrentImg(productsImg.length - 1);
+    } else {
+      setCurrentImg(currentImg - 1);
+    }
   }
 
   console.log("products-0--", productsImg[1]);
   return (
     <div className="imgbox relative ">
-      <Image className="h-full" height={200}  width={375} src={productsImg[currentImg].src} alt="" />
+      <Image
+        className="h-full"
+        height={200}
+        width={375}
+        src={productsImg[currentImg].src}
+        alt=""
+      />
       <div className="flex gap-[200px] px-3 w-full items-center  absolute inset-0">
         <button className=" bg-white rounded-full p-2 h-8 w-8 flex items-center">
           <PreviousBtn onClick={handleClickPrivious} />

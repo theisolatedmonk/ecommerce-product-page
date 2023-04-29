@@ -25,7 +25,7 @@ export function Header() {
         <div className="flex gap-3 h-4">
           <div className=" ">
             <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
-              3
+              3 
             </p>
             <CartSvg Name="border-2 " />
           </div>
@@ -53,7 +53,7 @@ function MobileMenu({
         <Image className="h-3 w-3" src={close} alt="" onClick={()=>setMenu(false)} />
         <ul className="gap-4 flex flex-col ">
           <li>Collection</li>
-          <li>Men</li>
+          <li>Men</li>  
           <li>Women</li>
           <li>About</li>
           <li>Contact</li>
