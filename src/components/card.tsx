@@ -47,22 +47,9 @@ export function Card() {
   );
 }
 
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {};
-
-export function SlideBtn() {
-  return (
-    <div className="flex gap-[200px] px-3 w-full items-center  absolute inset-0">
-      <button className=" bg-white rounded-full p-2 h-8 w-8 flex items-center">
-        <PreviousBtn />
-      </button>
-      <button className=" bg-white rounded-full p-2 flex items-center h-8 w-8  ">
-        <NextBtn />
-      </button>
-    </div>
-  );
-}
 
 export function Discription() {
   return (
@@ -99,15 +86,31 @@ export function Price() {
 }
 
 export function PluseMinuse() {
+  const [count, setCount] = useState(0);
+  function handleClickPluse() {
+    setCount(count + 1);
+  }
+  function handleClickMinus() {
+    setCount(count - 1);
+  }
+
   return (
     <div className="p-4 ">
       <div className="itemcount flex justify-between items-center rounded-lg p-2 bg-slate-100">
-        <button>
+        <button onClick={handleClickMinus}>
           <Image className=" " src={minus} alt="" />
         </button>
-        <p>0</p>
-        <button className="flex justify-center  items-center">
-          <Image className="  " src={plus} alt="" />
+        <p>{count} </p>
+        <button
+          onClick={handleClickPluse}
+          className="flex justify-center  items-center"
+        >
+          <Image
+            className="  "
+            src={plus}
+            alt=""
+            onClick={() => setCount(count)}
+          />
         </button>
       </div>
     </div>
@@ -125,11 +128,10 @@ export function AdddCartBtn() {
   );
 }
 
-
-
-export function NextBtn({}: Props) {
+export function NextBtn(props: any) {
   return (
     <svg
+      {...props}
       className={
         "fill-none rounded-full  hover:stroke-[hsl(26,100%,55%)] stroke-black "
       }
@@ -147,9 +149,10 @@ export function NextBtn({}: Props) {
     </svg>
   );
 }
-export function PreviousBtn({}: Props) {
+export function PreviousBtn(props: any) {
   return (
     <svg
+      {...props}
       width="12"
       height="18"
       className=" hover:stroke-[hsl(26,100%,55%)] stroke-black"

@@ -24,9 +24,9 @@ import {
   Price,
   AdddCartBtn,
   PluseMinuse,
-  SlideBtn,
 } from "@/components/card";
 import { Header } from "@/components/Header";
+import { PreviewImg } from "@/components/Slid";
 
 export default function Home() {
   return (
@@ -35,10 +35,7 @@ export default function Home() {
         <Header />
         <Card />
 
-        <div className="imgbox relative ">
-          <Image className="h-" src={product1} alt="" />
-          <SlideBtn />
-        </div>
+        <PreviewImg productsImg={""} />
 
         <Discription />
 
