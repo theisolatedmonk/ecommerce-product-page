@@ -9,20 +9,31 @@ import plus from "@/images/icon-plus.svg";
 import cart from "@/images/icon-cart.svg";
 import close from "@/images/icon-close.svg";
 
+
 export function Card() {
+
+  const[ empty, setEmpty] =useState('hidden');
+  const[ active, setActive] =useState('flex')
+  function handleDelete(){
+  setActive(active)
+  setActive(empty)
+  }
+  
+  
   return (
-    <div className="cartfill bg-white absolute w-[270px] flex flex-col z-10 rounded-md ml-2 mt-14   text-xs  font-KumbhSans  hidden">
+    <div className="cartfill bg-white absolute w-[270px]  flex-col z-10 rounded-md ml-2 mt-14   text-xs  font-KumbhSans ">
       <p className="p-4 font-bold ">Cart</p>
       <hr className="w-full " />
       <div className="w-full flex flex-col p-4 gap-4 ">
         <div className="">
-          <div className="h-16 w-full flex  justify-center items-center gap-[14px]  ">
+          <div className={` flex-col ${active}`}>
+          <div className={`h-16 w-full flex  justify-center items-center gap-[14px] `} >
             <Image
               className="h-10 w-10 rounded-md"
               src={product1Thumb}
               alt=""
             />
-            <div className="flex flex-col ">
+            <div className="flex ${flex-col} ">
               <p className="text-xs text-[hsl(220,14%,75%)]">
                 Fall Limited Edition Sneakers
               </p>
@@ -32,14 +43,16 @@ export function Card() {
               </div>
             </div>
             <button>
-              <DeleteSvg className="" />
+               <DeleteSvg className="" onClick={handleDelete}/>
             </button>
           </div>
-          <button className="p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full">
+          <button className={`p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}>
+    
             Checkout
           </button>
+          </div>
         </div>
-        <div className=" text-center font-bold text-[hsl(219,9%,45%)] py-12 hidden">
+        <div className={`text-center font-bold text-[hsl(219,9%,45%)] py-12 `} >
           Your cart is empty
         </div>
       </div>
@@ -91,6 +104,7 @@ export function PluseMinuse() {
     setCount(count + 1);
   }
   function handleClickMinus() {
+    if (count === 1 || count >1)
     setCount(count - 1);
   }
 

@@ -5,9 +5,23 @@ import menuImg from "@/images/icon-menu.svg";
 import close from "@/images/icon-close.svg";
 
 import { Dispatch, SetStateAction, useState } from "react";
+import { Card } from "./card";
+
+
 
 export function Header() {
   const [menu, setMenu] = useState(false);
+  
+  const[cartActive, setCartActive] =useState('hidden')
+  function  handleClickCart(){
+  if (cartActive === 'hidden'){
+    setCartActive('flex')
+  }else{
+    setCartActive('hidden')
+
+  }
+ 
+  }
 
   return (
     <>
@@ -27,11 +41,12 @@ export function Header() {
             <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
               3 
             </p>
-            <CartSvg Name="border-2 " />
+            <CartSvg   onClick={handleClickCart} Name="border-2 " />
           </div>
           <Image className="h-full w-auto" src={avatar} alt="" />
         </div>
       </div>
+      <Card  className= {cartActive}/>
     </>
   );
 }
