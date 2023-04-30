@@ -31,10 +31,8 @@ import { PreviewImg } from "@/components/Slid";
 export default function Home() {
   return (
     <main className=" flex  justify-center items-center bg-black min-h-screen font-KumbhSans">
-      <div className="w-72 relative text-black h-full bg-white flex flex-col  ">
+      <div className="w-72 relative text-black h-full bg-white flex flex-col">
         <Header />
-        <Card />
-
         <PreviewImg productsImg={""} />
 
         <Discription />
