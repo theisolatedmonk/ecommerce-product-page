@@ -9,6 +9,7 @@ import { Card } from "./card";
 
 
 
+
 export function Header() {
   const [menu, setMenu] = useState(false);
   
@@ -41,12 +42,12 @@ export function Header() {
             <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
               3 
             </p>
-            <CartSvg   onClick={handleClickCart} Name="border-2 " />
+            <CartSvg   onClick={handleClickCart} className="border-2 " />
           </div>
           <Image className="h-full w-auto" src={avatar} alt="" />
         </div>
       </div>
-      <Card  className= {cartActive}/>
+      <Card  cartActiveName= {cartActive}/>
     </>
   );
 }

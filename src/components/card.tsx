@@ -9,17 +9,14 @@ import plus from "@/images/icon-plus.svg";
 import cart from "@/images/icon-cart.svg";
 import close from "@/images/icon-close.svg";
 
-
 export function Card() {
-
-  const[ empty, setEmpty] =useState('hidden');
-  const[ active, setActive] =useState('flex')
-  function handleDelete(){
-  setActive(active)
-  setActive(empty)
+  // const[ empty, setEmpty] =useState('hidden');
+  const [active, setActive] = useState("flex");
+  function handleDelete() {
+    setActive(active);
+    // setActive(empty)
   }
-  
-  
+
   return (
     <div className="cartfill bg-white absolute w-[270px]  flex-col z-10 rounded-md ml-2 mt-14   text-xs  font-KumbhSans ">
       <p className="p-4 font-bold ">Cart</p>
@@ -27,32 +24,37 @@ export function Card() {
       <div className="w-full flex flex-col p-4 gap-4 ">
         <div className="">
           <div className={` flex-col ${active}`}>
-          <div className={`h-16 w-full flex  justify-center items-center gap-[14px] `} >
-            <Image
-              className="h-10 w-10 rounded-md"
-              src={product1Thumb}
-              alt=""
-            />
-            <div className="flex ${flex-col} ">
-              <p className="text-xs text-[hsl(220,14%,75%)]">
-                Fall Limited Edition Sneakers
-              </p>
-              <div className="flex gap-2 ">
-                <p className=" text-xs text-[hsl(220,14%,75%)]">$125.00 x 3 </p>
-                <p className="text-xs font-bold">$375.00</p>
+            <div
+              className={`h-16 w-full flex  justify-center items-center gap-[14px] `}
+            >
+              <Image
+                className="h-10 w-10 rounded-md"
+                src={product1Thumb}
+                alt=""
+              />
+              <div className="flex ${flex-col} ">
+                <p className="text-xs text-[hsl(220,14%,75%)]">
+                  Fall Limited Edition Sneakers
+                </p>
+                <div className="flex gap-2 ">
+                  <p className=" text-xs text-[hsl(220,14%,75%)]">
+                    $125.00 x 3{" "}
+                  </p>
+                  <p className="text-xs font-bold">$375.00</p>
+                </div>
               </div>
+              <button>
+                <DeleteSvg className="" onClick={handleDelete} />
+              </button>
             </div>
-            <button>
-               <DeleteSvg className="" onClick={handleDelete}/>
+            <button
+              className={`p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}
+            >
+              Checkout
             </button>
           </div>
-          <button className={`p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}>
-    
-            Checkout
-          </button>
-          </div>
         </div>
-        <div className={`text-center font-bold text-[hsl(219,9%,45%)] py-12 `} >
+        <div className={`text-center font-bold text-[hsl(219,9%,45%)] py-12 `}>
           Your cart is empty
         </div>
       </div>
@@ -104,8 +106,7 @@ export function PluseMinuse() {
     setCount(count + 1);
   }
   function handleClickMinus() {
-    if (count === 1 || count >1)
-    setCount(count - 1);
+    if (count === 1 || count > 1) setCount(count - 1);
   }
 
   return (
