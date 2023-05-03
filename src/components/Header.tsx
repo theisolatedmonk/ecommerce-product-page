@@ -2,27 +2,26 @@ import Image from "next/image";
 import avatar from "@/images/image-avatar.png";
 import logo from "@/images/logo.svg";
 import menuImg from "@/images/icon-menu.svg";
+
 import close from "@/images/icon-close.svg";
 
 import { Dispatch, SetStateAction, useState } from "react";
 import { Card } from "./card";
-
-
-
+import { useAtom } from "jotai";
+import { cartItemAtom } from "@/store/atom";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
   const [showCard, setShowCard] = useState(false);
-  
-  const[cartActive, setCartActive] =useState('hidden')
-  function  handleClickCart(){
-  if (cartActive === 'hidden'){
-    setCartActive('flex')
-  }else{
-    setCartActive('hidden')
+  const [cartItemNo] = useAtom(cartItemAtom);
 
-  }
- 
+  const [cartActive, setCartActive] = useState("hidden");
+  function handleClickCart() {
+    if (cartActive === "hidden") {
+      setCartActive("flex");
+    } else {
+      setCartActive("hidden");
+    }
   }
 
   return (
@@ -41,7 +40,7 @@ export function Header() {
         <div className="flex gap-3 h-4">
           <div className=" ">
             <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
-              3 
+              {cartItemNo}
             </p>
             <CartSvg onclick={() => setShowCard(!showCard)} />
 
@@ -50,9 +49,7 @@ export function Header() {
           <Image className="h-full w-auto" src={avatar} alt="" />
         </div>
       </div>
-      {
-       showCard=== true? <Card /> : ""
-      }
+      {showCard === true ? <Card /> : ""}
     </>
   );
 }
@@ -71,10 +68,15 @@ function MobileMenu({
       } `}
     >
       <div className="w-[190px] bg-white p-4 flex flex-col gap-8">
-        <Image className="h-3 w-3" src={close} alt="" onClick={()=>setMenu(false)} />
+        <Image
+          className="h-3 w-3"
+          src={close}
+          alt=""
+          onClick={() => setMenu(false)}
+        />
         <ul className="gap-4 flex flex-col ">
           <li>Collection</li>
-          <li>Men</li>  
+          <li>Men</li>
           <li>Women</li>
           <li>About</li>
           <li>Contact</li>
@@ -84,9 +86,10 @@ function MobileMenu({
   );
 }
 
-export function CartSvg(props: { Name?: string; onclick: () => void })  {
+export function CartSvg(props: { Name?: string; onclick: () => void }) {
   return (
-    <svg onClick={props.onclick}
+    <svg
+      onClick={props.onclick}
       width="22"
       height="20"
       className={"fill-[#69707D] hover:fill-black "}

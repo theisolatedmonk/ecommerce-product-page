@@ -8,17 +8,19 @@ import next from "@/images/icon-next.svg";
 import plus from "@/images/icon-plus.svg";
 import cart from "@/images/icon-cart.svg";
 import close from "@/images/icon-close.svg";
+import { useAtom } from "jotai";
+import { cartItemAtom, countAtom } from "@/store/atom";
 
 export function Card() {
   // const[ empty, setEmpty] =useState('hidden');
-  const [show, setShow] = useState(true);
+  const [cartItemNo, setCartItemAtom] = useAtom(cartItemAtom);
 
   return (
     <div className="cartfill bg-white absolute w-[270px]  flex-col z-10 rounded-md ml-2 mt-14   text-xs  font-KumbhSans ">
       <p className="p-4 font-bold ">Cart</p>
       <hr className="w-full " />
       <div className="w-full   p-4 ">
-        {show ? <CartFilled  setShow={setShow} /> : <CartEmpty />}
+        {cartItemNo > 0 ? <CartFilled /> : <CartEmpty />}
       </div>
     </div>
   );
@@ -43,13 +45,12 @@ export function Discription() {
     </div>
   );
 }
- type PriceType= {
-  amount: number
-  discountPercent: number
-  discountAmount: number
- }
-export function Price(props:PriceType
-) {
+type PriceType = {
+  amount: number;
+  discountPercent: number;
+  discountAmount: number;
+};
+export function Price(props: PriceType) {
   return (
     <div className="price flex  items-center justify-between  p-4">
       <div className="flex gap-2">
@@ -68,7 +69,10 @@ export function Price(props:PriceType
 }
 
 export function PluseMinuse() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useAtom(countAtom);
+  // const [count, setCount] = useState(0);
+  // const [text, setText] = useAtom(textAtom);
+
   function handleClickPluse() {
     setCount(count + 1);
   }
@@ -100,9 +104,18 @@ export function PluseMinuse() {
 }
 
 export function AdddCartBtn() {
+  const [count, setCount] = useAtom(countAtom);
+  const [, setCartItem] = useAtom(cartItemAtom);
+  function handleOnClick() {
+    setCartItem(count);
+    setCount(0);
+  }
   return (
     <div className="p-3 text-white font-KumbhSans">
-      <button className="flex justify-center items-center p-3 rounded-lg bg-[hsl(26,100%,55%)] w-full gap-3">
+      <button
+        className="flex justify-center items-center p-3 rounded-lg bg-[hsl(26,100%,55%)] w-full gap-3"
+        onClick={handleOnClick}
+      >
         <Image className=" h-3 w-3 " src={cart} alt="" />
         <p className=" font-bold text-xs">Add to cart</p>
       </button>
@@ -151,52 +164,61 @@ export function PreviousBtn(props: any) {
   );
 }
 
-export function CartFilled({
-  setShow,
-}: {
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
-  name?: string;
-}) {
-  return (
-    <div className={` flex-col `}>
-      <div
-        className={`h-16 w-full flex  justify-center items-center gap-[14px] `}
-      >
-        <Image className="h-10 w-10 rounded-md" src={product1Thumb} alt="" />
-        <div className="flex flex-col ">
-          <p className="text-xs text-[hsl(220,14%,75%)]">
-            Fall Limited Edition Sneakers
-          </p>
-          <div className="flex gap-2 ">
-            <p className=" text-xs text-[hsl(220,14%,75%)]">$125.00 x 3 </p>
-            <p className="text-xs font-bold">$375.00</p>
+export function CartFilled() {
+  const [cartItemNo, setCartItemAtom] = useAtom(cartItemAtom);
 
-            {/* <p className="text-xs font-bold">$375.00</p> */}
+  function handleDelete() {
+    // setShow(false);
+    setCartItemAtom(0);
+  }
+
+  return (
+    <>
+      {cartItemNo > 0 && (
+        <div className={` flex-col `}>
+          <div
+            className={`h-16 w-full flex  justify-center items-center gap-[14px] `}
+          >
+            <Image
+              className="h-10 w-10 rounded-md"
+              src={product1Thumb}
+              alt=""
+            />
+            <div className="flex flex-col ">
+              <p className="text-xs text-[hsl(220,14%,75%)]">
+                Fall Limited Edition Sneakers
+              </p>
+              <div className="flex gap-2 ">
+                <p className=" text-xs text-[hsl(220,14%,75%)]">
+                  $125.00 x {cartItemNo}{" "}
+                </p>
+                <p className="text-xs font-bold">${125 * cartItemNo}.00</p>
+
+                {/* <p className="text-xs font-bold">$375.00</p> */}
+              </div>
+            </div>
+            <button>
+              <DeleteSvg className="" onClick={handleDelete} />
+            </button>
           </div>
+          <button
+            className={`p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}
+          >
+            Checkout
+          </button>
         </div>
-        <button>
-          <DeleteSvg className="" onClick={() => setShow(false)} />
-        </button>
-      </div>
-      <button
-        className={`p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}
-      >
-        Checkout 
-      </button>
-    </div>
+      )}
+    </>
   );
 }
 
-export  function CartEmpty() {
+export function CartEmpty() {
   return (
     <div className="text-center font-bold text-[hsl(219,9%,45%)] py-12 ">
       Your cart is empty
     </div>
   );
 }
-
-
-
 
 export function Logo({}: Props) {
   return (
@@ -214,6 +236,7 @@ export function Logo({}: Props) {
     </svg>
   );
 }
+
 
 
 function DeleteSvg(
