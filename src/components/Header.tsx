@@ -12,6 +12,7 @@ import { Card } from "./card";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
+  const [showCard, setShowCard] = useState(false);
   
   const[cartActive, setCartActive] =useState('hidden')
   function  handleClickCart(){
@@ -42,12 +43,16 @@ export function Header() {
             <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
               3 
             </p>
-            <CartSvg   onClick={handleClickCart} className="border-2 " />
+            <CartSvg onclick={() => setShowCard(!showCard)} />
+
+            {/* <CartSvg onclick={() => !setShowCard(false)} /> */}
           </div>
           <Image className="h-full w-auto" src={avatar} alt="" />
         </div>
       </div>
-      <Card  cartActiveName= {cartActive}/>
+      {
+       showCard=== true? <Card /> : ""
+      }
     </>
   );
 }
@@ -79,9 +84,9 @@ function MobileMenu({
   );
 }
 
-export function CartSvg(props: { Name?: string }) {
+export function CartSvg(props: { Name?: string; onclick: () => void })  {
   return (
-    <svg
+    <svg onClick={props.onclick}
       width="22"
       height="20"
       className={"fill-[#69707D] hover:fill-black "}
