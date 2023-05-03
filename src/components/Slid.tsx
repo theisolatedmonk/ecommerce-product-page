@@ -36,18 +36,26 @@ export function PreviewImg(props: LargeImges) {
   console.log("products-0--", productsImg[1]);
   return (
     <div className="imgbox relative ">
+      <div className="sm:flex sm:flex-col">
       <Image
-        className="h-full"
+        className="h-full sm:rounded-lg"
         height={200}
         width={375}
         src={productsImg[currentImg].src}
         alt=""
       />
+      <div className="hidden sm:flex sm:justify-between w-[375px]  items-center py-2">
+        <Image className="rounded-lg   h-[75px] w-[75px] focus:outline-orange-500 hover:opacity-10" src={product1Thumb} alt={""}/>
+        <Image className="rounded-lg  h-[75px] w-[75px] hover:opacity-10" src={product2Thumb} alt={""}/>
+        <Image className="rounded-lg  h-[75px] w-[75px] hover:opacity-10" src={product3Thumb} alt={""}/>
+        <Image className="rounded-lg  h-[75px] w-[75px] hover:opacity-10" src={product4Thumb} alt={""}/>
+      </div>
+      </div>
       <div className="flex gap-[200px] px-3 w-full items-center  absolute inset-0">
-        <button className=" bg-white rounded-full p-2 h-8 w-8 flex items-center">
+        <button className=" bg-white rounded-full p-2 h-8 w-8 flex items-center sm:hidden">
           <PreviousBtn onClick={handleClickPrivious} />
         </button>
-        <button className=" bg-white rounded-full p-2 flex items-center h-8 w-8  ">
+        <button className=" bg-white rounded-full p-2 flex items-center h-8 w-8 sm:hidden ">
           <NextBtn onClick={handleClickNext} />
         </button>
       </div>

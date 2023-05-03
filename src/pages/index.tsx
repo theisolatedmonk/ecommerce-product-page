@@ -31,13 +31,19 @@ import { PreviewImg } from "@/components/Slid";
 export default function Home() {
   return (
     <main className=" flex  justify-center items-center bg-black min-h-screen font-KumbhSans">
-      <div className="w-72 relative text-black h-full bg-white flex flex-col">
+      <div className="w-72 relative text-black h-full bg-white flex flex-col  sm:w-full sm:min-h-screen ">
         <Header />
-        <PreviewImg productsImg={""} />
-        <Discription />
+        <div className="sm:flex  sm:justify-center sm:gap-10 sm: sm:items-center">
+          <div>   <PreviewImg productsImg={""} /></div>
+          <div>
+          <Discription />
         <Price amount={250} discountPercent={50} discountAmount={125} />
+        <div className="sm:flex sm:w-full  items-center justify-start ">
         <PluseMinuse />
         <AdddCartBtn />
+        </div>
+          </div>
+        </div>
       </div>
     </main>
   );

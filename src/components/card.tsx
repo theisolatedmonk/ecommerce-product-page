@@ -32,7 +32,7 @@ type Props = {};
 
 export function Discription() {
   return (
-    <div className="paracontainer flex flex-col gap-2 p-4 mt-4">
+    <div className="paracontainer flex flex-col gap-2 p-4 mt-4 sm:w-96">
       <p className="font-bold text-xs text-[hsl(26,100%,55%)] ">
         SNEAKER COMPANY
       </p>
@@ -81,8 +81,8 @@ export function PluseMinuse() {
   }
 
   return (
-    <div className="p-4 ">
-      <div className="itemcount flex justify-between items-center rounded-lg p-2 bg-slate-100">
+    <div className="p-4 sm:w-32">
+      <div className="itemcount flex justify-between items-center  rounded-lg p-2 bg-slate-100 sm:">
         <button onClick={handleClickMinus}>
           <Image className=" " src={minus} alt="" />
         </button>
@@ -111,7 +111,7 @@ export function AdddCartBtn() {
     setCount(0);
   }
   return (
-    <div className="p-3 text-white font-KumbhSans">
+    <div className="p-3 text-white font-KumbhSans sm:w-52">
       <button
         className="flex justify-center items-center p-3 rounded-lg bg-[hsl(26,100%,55%)] w-full gap-3"
         onClick={handleOnClick}
@@ -128,7 +128,7 @@ export function NextBtn(props: any) {
     <svg
       {...props}
       className={
-        "fill-none rounded-full  hover:stroke-[hsl(26,100%,55%)] stroke-black "
+        "fill-none rounded-full  hover:stroke-[hsl(26,100%,55%)] stroke-black   "
       }
       width="13"
       height="18"
