@@ -11,6 +11,12 @@ import { useAtom } from "jotai";
 import { cartItemAtom } from "@/store/atom";
 
 export function Header() {
+
+//  const headerLinks = ['Collection','Men', 'Women' ,'About','Contact'] 
+         
+const headerLinks = [{link: 'Collection', active: false}, {link: 'Men', active: true}, {link: 'About', active: false}, {link: 'Contact', active: false}, {link: 'Women', active: false}] 
+            
+
   const [menu, setMenu] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [cartItemNo] = useAtom(cartItemAtom);
@@ -37,12 +43,10 @@ export function Header() {
           />
           <Image className="mb-[3px] h-4 w-[100px] " src={logo} alt="" />
           <div className="hidden sm:flex text-sm justify-between gap-4  ">
-            <p>Collection</p>
-            <p>Men</p>
-            <p>Women</p>
-            <p>About</p>
-            <p>Contact</p>
-            <p>Collection</p>
+          {/*  */}
+          {headerLinks.map(link =>
+          <p className={`border-b-2 hover:border-orange-500 ${link.active? 'border-orange-500' : 'border-transparent '}`}>{link.link}</p>
+          )}
           </div>
         </div>
         <div className="flex gap-3 h-6">
@@ -84,7 +88,7 @@ function MobileMenu({
         />
         <ul className="gap-4 flex flex-col ">
           <li>Collection</li>
-          <li>Men</li>
+          <li>'Men'</li>
           <li>Women</li>
           <li>About</li>
           <li>Contact</li>

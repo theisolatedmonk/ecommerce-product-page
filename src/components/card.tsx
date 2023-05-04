@@ -177,7 +177,7 @@ export function CartFilled() {
       {cartItemNo > 0 && (
         <div className={` flex-col  `}>
           <div
-            className={`h-16 w-full flex  justify-center items-center gap-[14px] `}
+            className={`h-32 w-full flex  justify-center items-center gap-[14px] `}
           >
             <Image
               className="h-10 w-10 rounded-md"
