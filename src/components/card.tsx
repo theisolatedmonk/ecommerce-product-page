@@ -16,7 +16,7 @@ export function Card() {
   const [cartItemNo, setCartItemAtom] = useAtom(cartItemAtom);
 
   return (
-    <div className="cartfill bg-white absolute w-[270px]  flex-col z-10 rounded-md ml-2 mt-14   text-xs  font-KumbhSans ">
+    <div className="cartfill bg-white absolute w-[270px]  flex-col z-10 rounded-md ml-2 mt-14 sm:top-5 shadow-xl sm:ml-[800px]   text-sm  font-KumbhSans ">
       <p className="p-4 font-bold ">Cart</p>
       <hr className="w-full " />
       <div className="w-full   p-4 ">
@@ -33,11 +33,11 @@ type Props = {};
 export function Discription() {
   return (
     <div className="paracontainer flex flex-col gap-2 p-4 mt-4 sm:w-96">
-      <p className="font-bold text-xs text-[hsl(26,100%,55%)] ">
+      <p className="font-bold text-sm text-[hsl(26,100%,55%)] ">
         SNEAKER COMPANY
       </p>
       <p className="font-extrabold text-xl">Fall Limited Edition Sneakers</p>
-      <p className="text-xs text-[hsl(220,14%,75%)]">
+      <p className="text-sm text-[hsl(220,14%,75%)]">
         These low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they'll withstand everything the
         weather can offer.
@@ -55,12 +55,12 @@ export function Price(props: PriceType) {
     <div className="price flex  items-center justify-between  p-4">
       <div className="flex gap-2">
         <p className="font-extrabold">$ {props.discountAmount}</p>
-        <p className="bg-[hsl(26,100%,55%)] bg-opacity-20 rounded-md p-1 font-bold text-xs text-[hsl(26,100%,55%)] ">
+        <p className="bg-[hsl(26,100%,55%)] bg-opacity-20 rounded-md p-1 font-bold text-sm text-[hsl(26,100%,55%)] ">
           {props.discountPercent}%
         </p>
       </div>
       <div>
-        <p className="line-through font-bold text-xs text-[hsl(220,14%,75%)]">
+        <p className="line-through font-bold text-sm text-[hsl(220,14%,75%)]">
           $ {props.amount}
         </p>
       </div>
@@ -117,7 +117,7 @@ export function AdddCartBtn() {
         onClick={handleOnClick}
       >
         <Image className=" h-3 w-3 " src={cart} alt="" />
-        <p className=" font-bold text-xs">Add to cart</p>
+        <p className=" font-bold text-sm">Add to cart</p>
       </button>
     </div>
   );
@@ -175,7 +175,7 @@ export function CartFilled() {
   return (
     <>
       {cartItemNo > 0 && (
-        <div className={` flex-col `}>
+        <div className={` flex-col  `}>
           <div
             className={`h-16 w-full flex  justify-center items-center gap-[14px] `}
           >
@@ -184,17 +184,17 @@ export function CartFilled() {
               src={product1Thumb}
               alt=""
             />
-            <div className="flex flex-col ">
-              <p className="text-xs text-[hsl(220,14%,75%)]">
+            <div className="flex flex-col  sm:gap-5">
+              <p className="text-sm text-[hsl(220,14%,75%)]">
                 Fall Limited Edition Sneakers
               </p>
               <div className="flex gap-2 ">
-                <p className=" text-xs text-[hsl(220,14%,75%)]">
+                <p className=" text-sm text-[hsl(220,14%,75%)]">
                   $125.00 x {cartItemNo}{" "}
                 </p>
-                <p className="text-xs font-bold">${125 * cartItemNo}.00</p>
+                <p className="text-sm font-bold">${125 * cartItemNo}.00</p>
 
-                {/* <p className="text-xs font-bold">$375.00</p> */}
+                {/* <p className="text-sm font-bold">$375.00</p> */}
               </div>
             </div>
             <button>
@@ -202,7 +202,7 @@ export function CartFilled() {
             </button>
           </div>
           <button
-            className={`p-3 text-xs font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}
+            className={`p-3 text-sm font-bold text-white bg-[hsl(26,100%,55%)] rounded-md w-full `}
           >
             Checkout
           </button>

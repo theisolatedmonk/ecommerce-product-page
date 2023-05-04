@@ -27,19 +27,27 @@ export function Header() {
   return (
     <>
       <MobileMenu menu={menu} setMenu={setMenu} />
-      <div className="header flex items-center  w-full  text-xl justify-between p-4">
-        <div className="flex gap-3  items-center  border-red-300 ">
+      <div className="header flex items-center  w-full  text-xl justify-center p-4 sm:p-0  sm:py-10 sm:h ">
+        <div className="flex gap-3 sm:gap-16  items-center sm:justify-between ">
           <Image
-            className=" h-3 w-3"
+            className=" h-3 w-3 sm:hidden"
             src={menuImg}
             alt=""
             onClick={() => setMenu(true)}
           />
           <Image className="mb-[3px] h-4 w-[100px] " src={logo} alt="" />
+          <div className="hidden sm:flex text-sm justify-between gap-4  ">
+            <p>Collection</p>
+            <p>Men</p>
+            <p>Women</p>
+            <p>About</p>
+            <p>Contact</p>
+            <p>Collection</p>
+          </div>
         </div>
-        <div className="flex gap-3 h-4">
+        <div className="flex gap-3 h-6">
           <div className=" ">
-            <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
+            <p className=" h-[16px] w-[20px] font-bold text-center bg-[hsl(26,100%,55%)] sm:top-9 rounded-full absolute z-20 ml-2 top-3 px-1 text-[8px] flex items-center justify-center text-white">
               {cartItemNo}
             </p>
             <CartSvg onclick={() => setShowCard(!showCard)} />

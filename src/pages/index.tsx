@@ -31,9 +31,10 @@ import { PreviewImg } from "@/components/Slid";
 export default function Home() {
   return (
     <main className=" flex  justify-center items-center bg-black min-h-screen font-KumbhSans">
-      <div className="w-72 relative text-black h-full bg-white flex flex-col  sm:w-full sm:min-h-screen ">
+      <div className="w-72 relative text-black h-full bg-white flex flex-col  sm:w-full sm:min-h-screen sm:px-24">
         <Header />
-        <div className="sm:flex  sm:justify-center sm:gap-10 sm: sm:items-center">
+        <hr className="hidden sm:flex"/>
+        <div className="sm:flex  sm:justify-center sm:p-12  sm:gap-20 sm:items-center">
           <div>   <PreviewImg productsImg={""} /></div>
           <div>
           <Discription />
