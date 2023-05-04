@@ -27,7 +27,7 @@ export function Header() {
   return (
     <>
       <MobileMenu menu={menu} setMenu={setMenu} />
-      <div className="header flex items-center  w-full  text-xl justify-center p-4 sm:p-0  sm:py-10 sm:h ">
+      <div className="header flex items-center  w-full  text-xl justify-between p-4 sm:p-0  sm:py-10 sm:h sm:wr">
         <div className="flex gap-3 sm:gap-16  items-center sm:justify-between ">
           <Image
             className=" h-3 w-3 sm:hidden"
